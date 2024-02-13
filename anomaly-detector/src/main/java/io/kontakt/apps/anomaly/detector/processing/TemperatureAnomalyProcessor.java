@@ -1,6 +1,6 @@
-package io.kontak.apps.anomaly.detector.processing;
+package io.kontakt.apps.anomaly.detector.processing;
 
-import io.kontak.apps.anomaly.detector.detection.AnomalyDetector;
+import io.kontakt.apps.anomaly.detector.detection.AnomalyDetector;
 import io.kontak.apps.event.Anomaly;
 import io.kontak.apps.event.TemperatureReading;
 import lombok.RequiredArgsConstructor;

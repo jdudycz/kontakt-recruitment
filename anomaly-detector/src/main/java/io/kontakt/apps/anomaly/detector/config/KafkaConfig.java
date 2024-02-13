@@ -1,4 +1,4 @@
-package io.kontak.apps.anomaly.detector.config;
+package io.kontakt.apps.anomaly.detector.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import io.kontak.apps.anomaly.detector.detection.AnomalyDetector;
-import io.kontak.apps.anomaly.detector.processing.TemperatureAnomalyProcessor;
+import io.kontakt.apps.anomaly.detector.detection.AnomalyDetector;
+import io.kontakt.apps.anomaly.detector.processing.TemperatureAnomalyProcessor;
 import io.kontak.apps.event.Anomaly;
 import io.kontak.apps.event.TemperatureReading;
 import lombok.RequiredArgsConstructor;
