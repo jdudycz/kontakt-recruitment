@@ -3,12 +3,12 @@ package io.kontakt.apps.anomaly.storage.config
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.MapperFeature
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.databind.util.StdDateFormat
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import io.kontak.apps.event.Anomaly
+import io.kontakt.apps.anomaly.storage.consumer.AnomaliesConsumer
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -19,12 +19,12 @@ import java.util.function.Consumer
 
 
 @Configuration
-class KafkaConfig {
+class KafkaConfig(private val anomaliesConsumer: AnomaliesConsumer) {
+
 
     @Bean
-    fun anomalyConsumer(): Consumer<Flux<Message<Anomaly>>> = Consumer { anomalies ->
-        anomalies.subscribe { log.debug("Consumed anomaly {}", it.payload) }
-    }
+    fun anomalyConsumer(): Consumer<Flux<Message<Anomaly>>> =
+        Consumer { anomaliesConsumer.consume(it).subscribe() }
 
     @Bean
     fun objectMapper(): JsonMapper =

@@ -1,8 +1,25 @@
 version: '3.7'
 services:
-  zookeeper-temp-task:
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka-temp-task
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TOOLS_LOG4J_LOGLEVEL: ERROR
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+
+  zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
-    hostname: zookeeper-temp-task
     container_name: zookeeper-temp-task
     ports:
       - "2181:2181"
@@ -10,31 +27,12 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
 
-  broker-temp-task:
-    image: confluentinc/cp-kafka:7.4.0
-    hostname: broker-temp-task
-    container_name: broker-temp-task
-    depends_on:
-      - zookeeper-temp-task
+  mongo:
+    image: arm64v8/mongo:7.0-jammy
+    container_name: mongo-temp-task
     ports:
-      - "29092:29092"
+      - "27017:27017"
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-temp-task:2181'
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker-temp-task:9092,PLAINTEXT_HOST://localhost:29092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_TOOLS_LOG4J_LOGLEVEL: ERROR
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
-
-  kafdrop-temp-task:
-    image: obsidiandynamics/kafdrop:3.31.0
-    container_name: kafdrop-temp-task
-    depends_on:
-      - zookeeper-temp-task
-      - broker-temp-task
-    ports:
-      - 8085:9000
-    environment:
-      KAFKA_BROKERCONNECT: broker-temp-task:9092
+      MONGO_INITDB_DATABASE: temp
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
