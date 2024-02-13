@@ -1,6 +1,7 @@
-package io.kontak.apps.temperature.generator;
+package io.kontakt.apps.temperature.generator.publishing;
 
 import io.kontak.apps.event.TemperatureReading;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
@@ -9,13 +10,15 @@ import reactor.core.publisher.Sinks;
 
 import static io.kontak.apps.event.Constants.MSG_ID_HEADER;
 
+@Slf4j
 @Component
 public class TemperatureStreamPublisher {
 
     private final Sinks.Many<Message<TemperatureReading>> messageProducer = Sinks.many().multicast().onBackpressureBuffer();
 
     public Flux<Message<TemperatureReading>> getMessageProducer() {
-        return messageProducer.asFlux();
+        return messageProducer.asFlux()
+                .doOnNext(msg -> log.debug("Temperature reading {} produced", msg.getPayload()));
     }
 
     public void publish(TemperatureReading temperatureReading) {

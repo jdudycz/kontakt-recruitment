@@ -27,7 +27,9 @@ import java.util.function.Function;
 public class KafkaConfig {
 
     @Bean
-    public Function<Flux<Message<TemperatureReading>>, Flux<Message<Anomaly>>> anomalyDetectorProcessor(AnomalyDetector anomalyDetector) {
+    public Function<Flux<Message<TemperatureReading>>, Flux<Message<Anomaly>>> anomalyDetectorProcessor(
+            AnomalyDetector anomalyDetector
+    ) {
         return new TemperatureAnomalyProcessor(anomalyDetector);
     }
 

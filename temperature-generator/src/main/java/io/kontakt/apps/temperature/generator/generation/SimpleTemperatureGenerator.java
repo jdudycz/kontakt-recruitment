@@ -1,4 +1,4 @@
-package io.kontak.apps.temperature.generator;
+package io.kontakt.apps.temperature.generator.generation;
 
 import io.kontak.apps.event.TemperatureReading;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.UUID;
 
 @Component
-public class SimpleTemperatureGenerator implements TemperatureGenerator {
+class SimpleTemperatureGenerator implements TemperatureGenerator {
 
     private final Random random = new Random();
 

@@ -1,4 +1,4 @@
-package io.kontak.apps.temperature.generator.config;
+package io.kontakt.apps.temperature.generator.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -9,8 +9,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.kontak.apps.event.TemperatureReading;
-import io.kontak.apps.temperature.generator.TemperatureStreamPublisher;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import io.kontakt.apps.temperature.generator.publishing.TemperatureStreamPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
@@ -38,6 +37,4 @@ public class KafkaConfig {
                 .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
                 .build();
     }
-
-
 }

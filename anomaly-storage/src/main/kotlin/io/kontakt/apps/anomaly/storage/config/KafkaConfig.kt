@@ -23,7 +23,7 @@ class KafkaConfig {
 
     @Bean
     fun anomalyConsumer(): Consumer<Flux<Message<Anomaly>>> = Consumer { anomalies ->
-        anomalies.subscribe { log.debug("Consumed anomaly {}", it) }
+        anomalies.subscribe { log.debug("Consumed anomaly {}", it.payload) }
     }
 
     @Bean

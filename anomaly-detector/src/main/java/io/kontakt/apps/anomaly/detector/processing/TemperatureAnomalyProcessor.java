@@ -21,7 +21,7 @@ public class TemperatureAnomalyProcessor implements Function<Flux<Message<Temper
     public Flux<Message<Anomaly>> apply(Flux<Message<TemperatureReading>> events) {
         return events
                 .map(Message::getPayload)
-                .transform(anomalyDetector)
+                .transform(anomalyDetector::detectAnomalies)
                 .map(this::createAnomalyMessage);
     }
 

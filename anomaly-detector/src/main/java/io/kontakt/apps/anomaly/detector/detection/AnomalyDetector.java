@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public interface AnomalyDetector extends Function<Flux<TemperatureReading>, Flux<Anomaly>> {
-
+@FunctionalInterface
+public interface AnomalyDetector {
+    Flux<Anomaly> detectAnomalies(Flux<TemperatureReading> temperatureReadings);
 }

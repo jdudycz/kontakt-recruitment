@@ -19,7 +19,7 @@ class BatchAnomalyDetector implements AnomalyDetector {
     private final static int BATCH_SIZE = 10;
 
     @Override
-    public Flux<Anomaly> apply(Flux<TemperatureReading> temperatureReadings) {
+    public Flux<Anomaly> detectAnomalies(Flux<TemperatureReading> temperatureReadings) {
         return temperatureReadings.window(BATCH_SIZE)
                 .flatMap(Flux::collectList)
                 .flatMap(this::detectAnomalies);

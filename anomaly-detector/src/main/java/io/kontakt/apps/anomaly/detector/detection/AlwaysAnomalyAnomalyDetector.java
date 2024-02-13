@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux;
 class AlwaysAnomalyAnomalyDetector implements AnomalyDetector {
 
     @Override
-    public Flux<Anomaly> apply(Flux<TemperatureReading> temperatureReadings) {
+    public Flux<Anomaly> detectAnomalies(Flux<TemperatureReading> temperatureReadings) {
         return temperatureReadings
                 .map(Anomaly::new)
                 .doOnNext(a -> log.debug("Anomaly detected: {}", a));
