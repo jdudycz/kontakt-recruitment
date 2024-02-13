@@ -1,4 +1,4 @@
-package io.kontak.apps.anomaly.detector;
+package io.kontak.apps.anomaly.detector.detection;
 
 import io.kontak.apps.event.Anomaly;
 import io.kontak.apps.event.TemperatureReading;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class AlwaysAnomalyAnomalyDetector implements AnomalyDetector {
+class AlwaysAnomalyAnomalyDetector implements AnomalyDetector {
     @Override
     public Optional<Anomaly> apply(List<TemperatureReading> temperatureReadings) {
 

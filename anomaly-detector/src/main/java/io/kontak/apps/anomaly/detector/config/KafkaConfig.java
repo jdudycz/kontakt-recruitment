@@ -1,7 +1,7 @@
 package io.kontak.apps.anomaly.detector.config;
 
-import io.kontak.apps.anomaly.detector.AnomalyDetector;
-import io.kontak.apps.anomaly.detector.TemperatureMeasurementsListener;
+import io.kontak.apps.anomaly.detector.detection.AnomalyDetector;
+import io.kontak.apps.anomaly.detector.processing.TemperatureAnomalyProcessor;
 import io.kontak.apps.event.Anomaly;
 import io.kontak.apps.event.TemperatureReading;
 import org.apache.kafka.streams.kstream.KStream;
@@ -15,7 +15,7 @@ public class KafkaConfig {
 
     @Bean
     public Function<KStream<String, TemperatureReading>, KStream<String, Anomaly>> anomalyDetectorProcessor(AnomalyDetector anomalyDetector) {
-        return new TemperatureMeasurementsListener(anomalyDetector);
+        return new TemperatureAnomalyProcessor(anomalyDetector);
     }
 
 }
