@@ -4,23 +4,30 @@ import io.kontak.apps.anomaly.detector.detection.AnomalyDetector;
 import io.kontak.apps.event.Anomaly;
 import io.kontak.apps.event.TemperatureReading;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.streams.kstream.KStream;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
+import reactor.core.publisher.Flux;
 
-import java.util.List;
 import java.util.function.Function;
 
+import static io.kontak.apps.event.Constants.MSG_ID_HEADER;
+
 @RequiredArgsConstructor
-public class TemperatureAnomalyProcessor implements Function<KStream<String, TemperatureReading>, KStream<String, Anomaly>> {
+public class TemperatureAnomalyProcessor implements Function<Flux<Message<TemperatureReading>>, Flux<Message<Anomaly>>> {
 
     private final AnomalyDetector anomalyDetector;
 
     @Override
-    public KStream<String, Anomaly> apply(KStream<String, TemperatureReading> events) {
-        //TODO adapt to Recruitment Task requirements
+    public Flux<Message<Anomaly>> apply(Flux<Message<TemperatureReading>> events) {
         return events
-                .mapValues((temperatureReading) -> anomalyDetector.apply(List.of(temperatureReading)))
-                .filter((key, anomaly) -> anomaly.isPresent())
-                .mapValues((key, anomaly) -> anomaly.get())
-                .selectKey((key, anomaly) -> anomaly.thermometerId());
+                .map(Message::getPayload)
+                .transform(anomalyDetector)
+                .map(this::createAnomalyMessage);
+    }
+
+    private Message<Anomaly> createAnomalyMessage(Anomaly anomaly) {
+        return MessageBuilder.withPayload(anomaly)
+                .setHeader(MSG_ID_HEADER, anomaly.thermometerId())
+                .build();
     }
 }

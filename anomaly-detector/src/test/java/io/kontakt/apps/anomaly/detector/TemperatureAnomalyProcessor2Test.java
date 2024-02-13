@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import java.time.Duration;
 import java.time.Instant;
 
-public class TemperatureAnomalyProcessorTest extends AbstractIntegrationTest {
+public class TemperatureAnomalyProcessor2Test extends AbstractIntegrationTest {
 
     @Value("${spring.cloud.stream.bindings.anomalyDetectorProcessor-in-0.destination}")
     private String inputTopic;
