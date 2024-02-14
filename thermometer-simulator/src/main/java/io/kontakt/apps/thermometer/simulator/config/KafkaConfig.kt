@@ -1,4 +1,4 @@
-package io.kontakt.apps.anomaly.storage.config
+package io.kontakt.apps.thermometer.simulator.config
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
@@ -8,8 +8,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.databind.util.StdDateFormat
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import io.kontak.apps.event.Anomaly
-import io.kontakt.apps.anomaly.storage.consumer.AnomaliesConsumer
-import org.slf4j.LoggerFactory
+import io.kontakt.apps.anomaly.analytics.consumer.AnomaliesConsumer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.messaging.Message
@@ -36,8 +35,4 @@ class KafkaConfig(private val anomaliesConsumer: AnomaliesConsumer) {
             .serializationInclusion(JsonInclude.Include.NON_NULL)
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .build()
-
-    companion object {
-        private val log = LoggerFactory.getLogger(KafkaConfig::class.java)
-    }
 }

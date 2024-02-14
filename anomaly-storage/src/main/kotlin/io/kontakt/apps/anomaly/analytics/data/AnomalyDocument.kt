@@ -1,4 +1,4 @@
-package io.kontakt.apps.anomaly.storage.data
+package io.kontakt.apps.anomaly.analytics.data
 
 import io.kontak.apps.event.Anomaly
 import org.springframework.data.annotation.Id

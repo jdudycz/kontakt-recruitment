@@ -1,4 +1,4 @@
-package io.kontakt.apps.anomaly.storage
+package io.kontakt.apps.anomaly.analytics
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

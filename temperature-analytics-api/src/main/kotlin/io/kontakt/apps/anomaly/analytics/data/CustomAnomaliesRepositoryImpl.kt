@@ -1,6 +1,6 @@
-package io.kontakt.apps.anomaly.storage.data
+package io.kontakt.apps.anomaly.analytics.data
 
-import io.kontakt.apps.anomaly.storage.data.model.ThermometerIdsAggregation
+import io.kontakt.apps.anomaly.analytics.data.model.ThermometerIdsAggregation
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.data.mongodb.core.aggregate
 import org.springframework.data.mongodb.core.aggregation.Aggregation.*
@@ -14,11 +14,11 @@ class CustomAnomaliesRepositoryImpl(private val mongoTemplate: ReactiveMongoTemp
     override fun findThermometerIdsAboveThreshold(anomaliesCount: Int): Mono<ThermometerIdsAggregation> {
         val aggregation = newAggregation(
             group("thermometerId").count().`as`("anomalyCount"),
-            match(Criteria("anomalyCount").gt(anomaliesCount)),
+            match(Criteria("anomalyCount").gte(anomaliesCount)),
             group().push("_id").`as`("thermometerIds"),
             project().andExclude("_id")
         )
         return Mono.from(mongoTemplate.aggregate<ThermometerIdsAggregation>(aggregation, "anomalies"))
-            .defaultIfEmpty(ThermometerIdsAggregation(emptyList()))
+            .defaultIfEmpty(ThermometerIdsAggregation(emptySet()))
     }
 }

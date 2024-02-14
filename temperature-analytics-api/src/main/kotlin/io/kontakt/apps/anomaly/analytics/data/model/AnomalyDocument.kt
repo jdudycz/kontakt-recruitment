@@ -1,4 +1,4 @@
-package io.kontakt.apps.anomaly.storage.data.model
+package io.kontakt.apps.anomaly.analytics.data.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

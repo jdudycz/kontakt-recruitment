@@ -1,9 +1,12 @@
-package io.kontakt.apps.anomaly.storage
+package io.kontakt.apps.anomaly.analytics
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories
+
 
 @SpringBootApplication
+@EnableReactiveMongoRepositories
 class TemperatureAnalyticsApi
 
 fun main(args: Array<String>) {

@@ -1,6 +1,6 @@
-package io.kontakt.apps.anomaly.storage.data
+package io.kontakt.apps.anomaly.analytics.data
 
-import io.kontakt.apps.anomaly.storage.data.model.ThermometerIdsAggregation
+import io.kontakt.apps.anomaly.analytics.data.model.ThermometerIdsAggregation
 import reactor.core.publisher.Mono
 
 interface CustomAnomaliesRepository {

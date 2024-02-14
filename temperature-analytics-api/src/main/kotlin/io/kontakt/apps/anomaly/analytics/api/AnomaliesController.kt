@@ -1,8 +1,8 @@
-package io.kontakt.apps.anomaly.storage.api
+package io.kontakt.apps.anomaly.analytics.api
 
-import io.kontakt.apps.anomaly.storage.data.AnomaliesRepository
-import io.kontakt.apps.anomaly.storage.data.model.AnomalyDocument
-import io.kontakt.apps.anomaly.storage.data.model.ThermometerIdsAggregation
+import io.kontakt.apps.anomaly.analytics.data.AnomaliesRepository
+import io.kontakt.apps.anomaly.analytics.data.model.AnomalyDocument
+import io.kontakt.apps.anomaly.analytics.data.model.ThermometerIdsAggregation
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
