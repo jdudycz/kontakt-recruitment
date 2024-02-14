@@ -6,15 +6,16 @@ import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.messaging.Message
 import java.time.Instant
 
-@Document
+@Document("anomalies")
 data class AnomalyDocument(
-    @Id val thermometerId: String,
+    @Id var id: String?,
+    val thermometerId: String,
     val roomId: String,
     val temperature: Double,
     val timestamp: Instant
 ) {
     companion object {
         fun fromMessage(message: Message<Anomaly>) =
-            message.payload.run { AnomalyDocument(thermometerId, roomId, temperature, timestamp) }
+            message.payload.run { AnomalyDocument(null, thermometerId, roomId, temperature, timestamp) }
     }
 }
