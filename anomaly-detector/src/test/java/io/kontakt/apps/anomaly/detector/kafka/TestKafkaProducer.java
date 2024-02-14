@@ -1,4 +1,4 @@
-package io.kontakt.apps.anomaly.detector;
+package io.kontakt.apps.anomaly.detector.kafka;
 
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -26,6 +26,7 @@ public class TestKafkaProducer<T> implements Closeable {
                 key,
                 value
         ));
+        System.out.printf("PRODUCING!!!!");
         this.producer.flush();
     }
 

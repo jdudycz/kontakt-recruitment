@@ -41,7 +41,7 @@ class BatchAnomalyDetector implements AnomalyDetector {
                 .mapToDouble(TemperatureReading::temperature)
                 .average()
                 .orElse(Integer.MAX_VALUE);
-        return selectedReading.temperature() - average > 5
+        return selectedReading.temperature() - average >= 5
                 ? Mono.just(new Anomaly(selectedReading))
                 : Mono.empty();
     }
