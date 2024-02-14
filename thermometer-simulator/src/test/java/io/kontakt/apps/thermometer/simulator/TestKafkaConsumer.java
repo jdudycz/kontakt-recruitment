@@ -1,4 +1,4 @@
-package io.kontakt.apps.temperature.generator;
+package io.kontakt.apps.thermometer.simulator;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

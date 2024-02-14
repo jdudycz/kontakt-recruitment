@@ -1,4 +1,4 @@
-package io.kontakt.apps.temperature.generator.publishing;
+package io.kontakt.apps.thermometer.simulator.publishing;
 
 import io.kontak.apps.event.TemperatureReading;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class TemperatureStreamPublisher {
 
     public Flux<Message<TemperatureReading>> getMessageProducer() {
         return messageProducer.asFlux()
-                .doOnNext(msg -> log.debug("Temperature reading {} produced", msg.getPayload()));
+                .doOnNext(msg -> log.debug("Temperature reading {} published", msg.getPayload()));
     }
 
     public void publish(TemperatureReading temperatureReading) {

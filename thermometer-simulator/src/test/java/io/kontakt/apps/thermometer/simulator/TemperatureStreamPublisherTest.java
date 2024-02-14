@@ -1,7 +1,7 @@
-package io.kontakt.apps.temperature.generator;
+package io.kontakt.apps.thermometer.simulator;
 
 import io.kontak.apps.event.TemperatureReading;
-import io.kontakt.apps.temperature.generator.publishing.TemperatureStreamPublisher;
+import io.kontakt.apps.thermometer.simulator.publishing.TemperatureStreamPublisher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
