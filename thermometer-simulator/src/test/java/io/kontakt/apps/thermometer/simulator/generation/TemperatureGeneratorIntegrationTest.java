@@ -18,7 +18,7 @@ public class TemperatureGeneratorIntegrationTest {
 
     @Test
     @DisplayName("[generate] should generate reading based on properties from application.properties")
-    public void generate1() {
+    public void generate() {
         // when
         var reading = cut.generate();
 

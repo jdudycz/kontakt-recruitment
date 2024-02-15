@@ -1,7 +1,7 @@
 package io.kontakt.apps.anomaly.detector.utils;
 
-import io.kontak.apps.event.Anomaly;
-import io.kontak.apps.event.TemperatureReading;
+import io.kontakt.apps.event.Anomaly;
+import io.kontakt.apps.event.TemperatureReading;
 import lombok.experimental.UtilityClass;
 
 import java.time.Instant;

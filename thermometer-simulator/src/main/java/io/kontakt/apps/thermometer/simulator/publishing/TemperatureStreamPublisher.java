@@ -1,6 +1,6 @@
 package io.kontakt.apps.thermometer.simulator.publishing;
 
-import io.kontak.apps.event.TemperatureReading;
+import io.kontakt.apps.event.TemperatureReading;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 
-import static io.kontak.apps.event.Constants.MSG_ID_HEADER;
+import static io.kontakt.apps.event.Constants.MSG_ID_HEADER;
 
 @Slf4j
 @Component

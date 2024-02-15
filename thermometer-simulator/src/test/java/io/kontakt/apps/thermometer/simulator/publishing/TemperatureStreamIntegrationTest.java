@@ -1,6 +1,6 @@
 package io.kontakt.apps.thermometer.simulator.publishing;
 
-import io.kontak.apps.event.TemperatureReading;
+import io.kontakt.apps.event.TemperatureReading;
 import io.kontakt.apps.thermometer.simulator.AbstractIntegrationTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

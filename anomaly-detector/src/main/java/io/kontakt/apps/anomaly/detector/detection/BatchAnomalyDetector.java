@@ -1,7 +1,7 @@
 package io.kontakt.apps.anomaly.detector.detection;
 
-import io.kontak.apps.event.Anomaly;
-import io.kontak.apps.event.TemperatureReading;
+import io.kontakt.apps.event.Anomaly;
+import io.kontakt.apps.event.TemperatureReading;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
-package io.kontakt.apps.anomaly.analytics.data
+package io.kontakt.apps.anomaly.storage.data
 
-import io.kontak.apps.event.Anomaly
+import io.kontakt.apps.event.Anomaly
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.messaging.Message

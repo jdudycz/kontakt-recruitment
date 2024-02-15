@@ -1,5 +1,38 @@
 version: '3.7'
+
 services:
+
+  temperature-analytics-api:
+    image: temp/temperature-analytics-api:latest
+    container_name:  temperature-analytics-api-temp-task
+    build: ../temperature-analytics-api
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      ANOMALY-DETECTOR_ALGORITHM: BATCH
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+
+  anomaly-detector:
+    image: temp/anomaly-detector:latest
+    container_name: anomaly-detector-temp-task
+    build: ../anomaly-detector
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+    depends_on:
+      - kafka
+
+  anomaly-storage:
+    image: temp/anomaly-storage:latest
+    container_name: anomaly-storage-temp-task
+    build: ../anomaly-storage
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - kafka
+      - mongo
 
   kafka:
     image: confluentinc/cp-kafka:7.4.0

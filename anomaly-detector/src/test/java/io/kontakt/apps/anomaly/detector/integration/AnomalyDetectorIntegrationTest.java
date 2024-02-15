@@ -1,6 +1,6 @@
 package io.kontakt.apps.anomaly.detector.integration;
 
-import io.kontak.apps.event.Anomaly;
+import io.kontakt.apps.event.Anomaly;
 import io.kontakt.apps.anomaly.detector.AbstractIntegrationTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

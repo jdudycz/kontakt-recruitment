@@ -14,7 +14,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 public record ThermometerProperties(
         String thermometerId,
         String roomId,
-        double tempBase,
+        double baseTemp,
         @DecimalMin("0.0")
         @DecimalMax("0.2")
         double anomalyRate) {

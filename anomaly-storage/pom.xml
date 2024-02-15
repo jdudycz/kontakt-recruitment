@@ -11,6 +11,10 @@
 
     <artifactId>anomaly-storage</artifactId>
 
+    <properties>
+        <start-class>io.kontakt.apps.anomaly.storage.AnomalyStorageApplicationKt</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.kontak.apps</groupId>
@@ -76,6 +80,7 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>

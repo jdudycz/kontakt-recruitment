@@ -19,7 +19,7 @@ public class ThermometerSimulatorJob {
     private final TemperatureGenerator generator;
     private final TemperatureStreamPublisher publisher;
 
-    @Scheduled(fixedRateString = "${thermometer-simulator.rateMillis}")
+    @Scheduled(fixedRateString = "${thermometer-simulator.read-rate-millis}")
     public void publishReading() {
         publisher.publish(generator.generate());
     }

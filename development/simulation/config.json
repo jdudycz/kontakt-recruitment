@@ -1,0 +1,30 @@
+{
+  "dockerNetwork": "development_default",
+  "baseTemp": 20,
+  "simulators": [
+    {
+      "id": "thermometer-1",
+      "roomId": "room-1",
+      "anomalyRate": 0.1,
+      "readRateMillis": 1000
+    },
+    {
+      "id": "thermometer-2",
+      "roomId": "room-1",
+      "anomalyRate": 0.03,
+      "readRateMillis": 200
+    },
+    {
+      "id": "thermometer-3",
+      "roomId": "room-2",
+      "anomalyRate": 0.2,
+      "readRateMillis": 1000
+    },
+    {
+      "id": "thermometer-4",
+      "roomId": "room-2",
+      "anomalyRate": 0,
+      "readRateMillis": 500
+    }
+  ]
+}

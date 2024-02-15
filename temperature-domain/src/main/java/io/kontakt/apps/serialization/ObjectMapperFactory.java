@@ -1,4 +1,4 @@
-package io.kontakt.apps.thermometer.simulator;
+package io.kontakt.apps.serialization;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -8,26 +8,14 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import io.kontak.apps.event.TemperatureReading;
-import io.kontakt.apps.thermometer.simulator.publishing.TemperatureStreamPublisher;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.Message;
-import reactor.core.publisher.Flux;
+import lombok.experimental.UtilityClass;
 
 import java.util.TimeZone;
-import java.util.function.Supplier;
 
-@Configuration
-public class KafkaConfig {
+@UtilityClass
+public class ObjectMapperFactory {
 
-    @Bean
-    public Supplier<Flux<Message<TemperatureReading>>> messageProducer(TemperatureStreamPublisher publisher) {
-        return publisher::getMessageProducer;
-    }
-
-    @Bean
-    public static ObjectMapper objectMapper() {
+    public static ObjectMapper createJsonMapper() {
         return JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)

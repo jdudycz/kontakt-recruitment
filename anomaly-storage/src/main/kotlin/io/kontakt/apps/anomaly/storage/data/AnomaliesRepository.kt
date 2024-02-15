@@ -1,4 +1,4 @@
-package io.kontakt.apps.anomaly.analytics.data
+package io.kontakt.apps.anomaly.storage.data
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository

@@ -1,8 +1,8 @@
-package io.kontakt.apps.anomaly.analytics.consumer
+package io.kontakt.apps.anomaly.storage.consumer
 
-import io.kontak.apps.event.Anomaly
-import io.kontakt.apps.anomaly.analytics.data.AnomaliesRepository
-import io.kontakt.apps.anomaly.analytics.data.AnomalyDocument
+import io.kontakt.apps.event.Anomaly
+import io.kontakt.apps.anomaly.storage.data.AnomaliesRepository
+import io.kontakt.apps.anomaly.storage.data.AnomalyDocument
 import org.slf4j.LoggerFactory
 import org.springframework.messaging.Message
 import org.springframework.stereotype.Component

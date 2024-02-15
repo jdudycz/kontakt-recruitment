@@ -1,6 +1,6 @@
 package io.kontakt.apps.anomaly.detector.detection;
 
-import io.kontak.apps.event.Anomaly;
+import io.kontakt.apps.event.Anomaly;
 import io.kontakt.apps.anomaly.detector.utils.Fixtures;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;

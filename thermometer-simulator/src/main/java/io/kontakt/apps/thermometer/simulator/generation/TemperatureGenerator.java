@@ -1,6 +1,6 @@
 package io.kontakt.apps.thermometer.simulator.generation;
 
-import io.kontak.apps.event.TemperatureReading;
+import io.kontakt.apps.event.TemperatureReading;
 
 @FunctionalInterface
 public interface TemperatureGenerator {

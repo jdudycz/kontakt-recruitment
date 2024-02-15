@@ -1,6 +1,6 @@
 package io.kontakt.apps.thermometer.simulator.generation;
 
-import io.kontak.apps.event.TemperatureReading;
+import io.kontakt.apps.event.TemperatureReading;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +20,7 @@ class TemperatureGeneratorImpl implements TemperatureGenerator {
 
     @Override
     public TemperatureReading generate() {
-        var temp = generateTemp(thermometerProperties.tempBase());
+        var temp = generateTemp(thermometerProperties.baseTemp());
         return new TemperatureReading(
                 thermometerProperties.thermometerId(),
                 thermometerProperties.roomId(),

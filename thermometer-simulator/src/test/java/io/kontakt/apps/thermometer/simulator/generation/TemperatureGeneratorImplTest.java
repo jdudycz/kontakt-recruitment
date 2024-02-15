@@ -69,7 +69,7 @@ public class TemperatureGeneratorImplTest {
         var readings = IntStream.range(0, 1000).mapToDouble(it -> cut.generate().temperature());
 
         // then
-        assertThat(readings.allMatch(it -> Math.abs(it - properties.tempBase()) < BASE_SPREAD)).isTrue();
+        assertThat(readings.allMatch(it -> Math.abs(it - properties.baseTemp()) < BASE_SPREAD)).isTrue();
     }
 
     @Test
@@ -83,7 +83,7 @@ public class TemperatureGeneratorImplTest {
         var readings = IntStream.range(0, 1000).mapToDouble(it -> cut.generate().temperature());
 
         // then
-        assertThat(readings.anyMatch(it -> it - properties.tempBase() >= ANOMALY_MIN)).isTrue();
+        assertThat(readings.anyMatch(it -> it - properties.baseTemp() >= ANOMALY_MIN)).isTrue();
     }
 
 

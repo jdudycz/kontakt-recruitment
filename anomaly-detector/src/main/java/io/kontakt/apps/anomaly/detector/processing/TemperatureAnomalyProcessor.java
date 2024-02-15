@@ -1,8 +1,8 @@
 package io.kontakt.apps.anomaly.detector.processing;
 
 import io.kontakt.apps.anomaly.detector.detection.AnomalyDetector;
-import io.kontak.apps.event.Anomaly;
-import io.kontak.apps.event.TemperatureReading;
+import io.kontakt.apps.event.Anomaly;
+import io.kontakt.apps.event.TemperatureReading;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 
 import java.util.function.Function;
 
-import static io.kontak.apps.event.Constants.MSG_ID_HEADER;
+import static io.kontakt.apps.event.Constants.MSG_ID_HEADER;
 
 @RequiredArgsConstructor
 public class TemperatureAnomalyProcessor implements Function<Flux<Message<TemperatureReading>>, Flux<Message<Anomaly>>> {

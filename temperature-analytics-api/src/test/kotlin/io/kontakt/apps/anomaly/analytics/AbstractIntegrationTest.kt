@@ -7,7 +7,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 
 @Testcontainers
 @AutoConfigureWebTestClient
-@SpringBootTest(classes = [TemperatureAnalyticsApi::class, MongoConfig::class])
+@SpringBootTest(classes = [TemperatureAnalyticsApiApplication::class, MongoConfig::class])
 abstract class AbstractIntegrationTest {
 
 }
